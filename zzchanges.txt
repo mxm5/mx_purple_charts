@@ -6,3 +6,7 @@ what is @required
 how to manage input data in a stateless widget
         with the T E C = [T]ext[E]diting[C]ontroller
         which is a final value and has state manager in it and returns the text
+how we can make a column scrollable
+        we make it wrapped with a container and give container a fixed size
+        then it will never change its height dynamiclay and hard container
+        can be placed into a single child scroll view
