@@ -1,0 +1,8 @@
+what is date type in dart
+        DateTime
+what is @required
+        it is a thing that is not in the dart but only in flutter
+        thats why it is in foundation.dart so we import it
+how to manage input data in a stateless widget
+        with the T E C = [T]ext[E]diting[C]ontroller
+        which is a final value and has state manager in it and returns the text

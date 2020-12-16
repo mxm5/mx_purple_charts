@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  intl: ^0.16.1
+  shamsi_date: ^0.9.1
 
 
   # The following adds the Cupertino Icons font to your application.
