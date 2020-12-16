@@ -4,11 +4,53 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:grocery_app_flutter/transaction.dart';
 
+import 'input_widgets/input_widget.dart';
+import 'input_widgets/list_widget.dart';
+
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final List<Transaction> _transactions = [
+    Transaction(
+        amount: 25.99,
+        date: DateTime.now(),
+        id: 'Hxl352lvz',
+        title: 'new shoes'),
+    Transaction(
+        amount: 35.99,
+        date: DateTime.now(),
+        id: 'xnjr353',
+        title: 'grocery things'),
+    Transaction(
+        amount: 77.99,
+        date: DateTime.now(),
+        id: 'fnkj30789',
+        title: 'water for trip')
+  ];
+
+  void _addTransaction(Transaction addedTransaction) {
+    setState(() {
+      _transactions.add(addedTransaction);
+    });
+  }
+
+  void startTransaction(BuildContext ctx) {
+    showModalBottomSheet(
+        context: ctx,
+        builder: (_) {
+          return InputWidget(
+            addTransaction: _addTransaction,
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,13 +61,13 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () {},
-        ),
         appBar: AppBar(
           title: Text('budget app'),
-          actions: [IconButton(icon: Icon(Icons.add), onPressed: () {})],
+          actions: [
+            IconButton(
+                icon: Icon(Icons.add),
+                onPressed: () => startTransaction(context))
+          ],
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -39,9 +81,15 @@ class MyApp extends StatelessWidget {
                 ),
                 color: Colors.purple,
               ),
-              ListOfItems(),
+              ListWidget(
+                transactions: _transactions,
+              ),
             ],
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () => startTransaction(context),
         ),
       ),
     );

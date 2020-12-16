@@ -21,3 +21,9 @@ what is underscore job in flutter
         when we get a forced value for the type of the thing we are passing but we wont use it or care to it
 when you copy a lot it means 
         then you will have to change it many places
+how we move the master state widget to a topper level
+        we take mini widgets in the places we want
+        and move logics to the new state handler
+        and at the final step we delete things
+        and only after that all we make widget STATE FUL
+        cuz flutter makes pointers to widget finals itself
