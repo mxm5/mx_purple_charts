@@ -21,19 +21,21 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('budget app'),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Card(
-              child: Text(
-                'charts',
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Colors.white),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Card(
+                child: Text(
+                  'charts',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white),
+                ),
+                color: Colors.purple,
               ),
-              color: Colors.purple,
-            ),
-            ListOfItems(),
-          ],
+              ListOfItems(),
+            ],
+          ),
         ),
       ),
     );
