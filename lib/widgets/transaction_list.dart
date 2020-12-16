@@ -1,29 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../transaction.dart';
+import '../models/transaction.dart';
 
-class ListWidget extends StatelessWidget {
+class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
 
-  ListWidget({this.transactions});
+  TransactionList(this.transactions);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 300,
       child: ListView.builder(
-        itemBuilder: (cx, i) {
+        itemBuilder: (ctx, index) {
           return Card(
             child: Row(
-              children: [
+              children: <Widget>[
                 Container(
                   margin: EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 15,
-                  ),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 5,
                     vertical: 10,
+                    horizontal: 15,
                   ),
                   decoration: BoxDecoration(
                     border: Border.all(
@@ -31,31 +28,34 @@ class ListWidget extends StatelessWidget {
                       width: 2,
                     ),
                   ),
+                  padding: EdgeInsets.all(10),
                   child: Text(
-                    '\$' + transactions[i].amount.toStringAsFixed(2),
+                    '\$${transactions[index].amount.toStringAsFixed(2)}',
                     style: TextStyle(
-                        color: Colors.purple,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.purple,
+                    ),
                   ),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: <Widget>[
                     Text(
-                      transactions[i].title,
+                      transactions[index].title,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      DateFormat.yMMMEd().format(transactions[i].date),
+                      DateFormat.yMMMd().format(transactions[index].date),
                       style: TextStyle(
-                          color: Colors.grey, fontWeight: FontWeight.w100),
+                        color: Colors.grey,
+                      ),
                     ),
                   ],
-                )
+                ),
               ],
             ),
           );
