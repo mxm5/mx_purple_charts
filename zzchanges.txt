@@ -17,3 +17,7 @@ how we can make a column scrollable
 
 what happens if we don't give item count to listview.builder
         it just renders red screen at the end of listview
+what is underscore job in flutter
+        when we get a forced value for the type of the thing we are passing but we wont use it or care to it
+when you copy a lot it means 
+        then you will have to change it many places

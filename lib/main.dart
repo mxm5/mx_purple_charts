@@ -18,8 +18,14 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {},
+        ),
         appBar: AppBar(
           title: Text('budget app'),
+          actions: [IconButton(icon: Icon(Icons.add), onPressed: () {})],
         ),
         body: SingleChildScrollView(
           child: Column(

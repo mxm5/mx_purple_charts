@@ -10,6 +10,21 @@ class InputWidget extends StatelessWidget {
 
   InputWidget({this.addTransaction});
 
+  void submitTrnxn() {
+    var amount = double.parse(amountInputController.text);
+    var title = titleInputController.text;
+
+    if (amount <= 0 || title.isEmpty || amount > 1000000000) {
+      return;
+    }
+
+    addTransaction(Transaction(
+        amount: amount,
+        date: DateTime.now(),
+        id: DateTime.now().toString(),
+        title: title));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -18,6 +33,7 @@ class InputWidget extends StatelessWidget {
         children: [
           TextField(
             controller: titleInputController,
+            onSubmitted: (_) => submitTrnxn(),
             cursorColor: Colors.purple,
             decoration: InputDecoration(
               labelText: 'title',
@@ -26,6 +42,8 @@ class InputWidget extends StatelessWidget {
           TextField(
             cursorColor: Colors.purple,
             controller: amountInputController,
+            keyboardType: TextInputType.number,
+            onSubmitted: (_) => submitTrnxn(),
             decoration: InputDecoration(
               labelText: 'amount',
             ),
@@ -34,13 +52,7 @@ class InputWidget extends StatelessWidget {
             margin: EdgeInsets.all(7),
             color: Colors.purple[50],
             child: FlatButton(
-                onPressed: () {
-                  addTransaction(Transaction(
-                      amount: double.parse(amountInputController.text),
-                      date: DateTime.now(),
-                      id: DateTime.now().toString(),
-                      title: titleInputController.text));
-                },
+                onPressed: submitTrnxn,
                 child: Text(
                   'add items',
                   style: TextStyle(

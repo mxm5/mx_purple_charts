@@ -32,7 +32,7 @@ class ListWidget extends StatelessWidget {
                     ),
                   ),
                   child: Text(
-                    '\$' + transactions[i].amount.toString(),
+                    '\$' + transactions[i].amount.toStringAsFixed(2),
                     style: TextStyle(
                         color: Colors.purple,
                         fontWeight: FontWeight.bold,
