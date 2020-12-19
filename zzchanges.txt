@@ -35,4 +35,23 @@ how we can receive a thing inside the statefull widget to pass it to state
         class using the widget.thing
 how we cna close modal bottom sheet
         Navigator.of (context).pop()
-
+whats the difference of primarySwatch with primaryColor
+        swatch has different shades and color is just one single color
+what is a short way when we do not add the data in the constructor
+        the context which is passed everywhere
+what is Theme class 
+        it is an object avalible in material dart
+how to add fonts in flutter
+        you first add a folder in the projectdir call it assets
+        uncomment the puspec.yaml file where it has fonts
+what is themeData in flutter
+        it is a themeData object that is in material dart and has some constructors
+        by default like .light() or .dark() so we can tap into some of its property
+        and change it directly now like .textTheme or like .primaryColor or all things manage
+what is copy with thing all the objects can have
+        copy with is some thing that takes the old default values and saves them but only 
+        changes one thing that is inside of it parameters
+what is insiede parenthesis of .textTheme.copyWith()
+        all the defaults of textTheme which is from textTheme inside of the
+        themeData.light or def and what it takes it only reassigns it to the
+        object aka themeData

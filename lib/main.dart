@@ -56,8 +56,18 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        fontFamily: 'Quicksand',
         primarySwatch: Colors.purple,
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+                title: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+        ),
       ),
       home: Scaffold(
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

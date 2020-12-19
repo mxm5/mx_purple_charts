@@ -27,14 +27,14 @@ class ListWidget extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.purple,
+                      color: Theme.of(context).primaryColor,
                       width: 2,
                     ),
                   ),
                   child: Text(
                     '\$' + transactions[i].amount.toStringAsFixed(2),
                     style: TextStyle(
-                        color: Colors.purple,
+                        color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 25),
                   ),
