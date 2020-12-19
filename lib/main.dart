@@ -41,10 +41,10 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  void startTransaction(BuildContext ctx) {
+  void _startTransaction({BuildContext ctx}) {
     showModalBottomSheet(
         context: ctx,
-        builder: (_) {
+        builder: (ctx) {
           return InputWidget(
             addTransaction: _addTransaction,
           );
@@ -64,9 +64,12 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: Text('budget app'),
           actions: [
-            IconButton(
+            Builder(builder: (context) {
+              return IconButton(
                 icon: Icon(Icons.add),
-                onPressed: () => startTransaction(context))
+                onPressed: () => _startTransaction(ctx: context),
+              );
+            })
           ],
         ),
         body: SingleChildScrollView(
@@ -87,10 +90,12 @@ class _MyAppState extends State<MyApp> {
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () => startTransaction(context),
-        ),
+        floatingActionButton: Builder(builder: (context) {
+          return FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: () => _startTransaction(ctx: context),
+          );
+        }),
       ),
     );
   }
