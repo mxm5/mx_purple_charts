@@ -27,3 +27,6 @@ how we move the master state widget to a topper level
         and at the final step we delete things
         and only after that all we make widget STATE FUL
         cuz flutter makes pointers to widget finals itself
+how to rename a branch in git 
+        go to the branch and do :
+        git branch -m 'fixed_error'
