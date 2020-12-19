@@ -3,12 +3,19 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:grocery_app_flutter/transaction.dart';
 
-class InputWidget extends StatelessWidget {
-  final titleInputController = TextEditingController();
-  final amountInputController = TextEditingController();
+class InputWidget extends StatefulWidget {
   final Function addTransaction;
 
   InputWidget({this.addTransaction});
+
+  @override
+  _InputWidgetState createState() => _InputWidgetState();
+}
+
+class _InputWidgetState extends State<InputWidget> {
+  final titleInputController = TextEditingController();
+
+  final amountInputController = TextEditingController();
 
   void submitTrnxn() {
     var amount = double.parse(amountInputController.text);
@@ -18,11 +25,14 @@ class InputWidget extends StatelessWidget {
       return;
     }
 
-    addTransaction(Transaction(
-        amount: amount,
-        date: DateTime.now(),
-        id: DateTime.now().toString(),
-        title: title));
+    widget.addTransaction(
+      Transaction(
+          amount: amount,
+          date: DateTime.now(),
+          id: DateTime.now().toString(),
+          title: title),
+    );
+    Navigator.of(context).pop();
   }
 
   @override

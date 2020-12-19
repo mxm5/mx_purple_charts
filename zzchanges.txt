@@ -30,3 +30,9 @@ how we move the master state widget to a topper level
 how to rename a branch in git 
         go to the branch and do :
         git branch -m 'fixed_error'
+how we can receive a thing inside the statefull widget to pass it to state
+        we use it in constructor and then we make it passed to the state
+        class using the widget.thing
+how we cna close modal bottom sheet
+        Navigator.of (context).pop()
+
