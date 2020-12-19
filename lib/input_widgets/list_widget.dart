@@ -44,10 +44,7 @@ class ListWidget extends StatelessWidget {
                   children: [
                     Text(
                       transactions[i].title,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: Theme.of(context).textTheme.title,
                     ),
                     Text(
                       DateFormat.yMMMEd().format(transactions[i].date),
