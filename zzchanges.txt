@@ -55,3 +55,16 @@ what is insiede parenthesis of .textTheme.copyWith()
         all the defaults of textTheme which is from textTheme inside of the
         themeData.light or def and what it takes it only reassigns it to the
         object aka themeData
+how we can know a list is null or not
+        with list.isEmpty property
+what is image.file() is good for
+        streaming data i think
+how to add our own images
+        first uncomment the pubspec.yaml file
+        then use image.asset(link)
+how to make Image take proper size
+        fit: Boxfit.cover
+what is get for ?
+        get is to calculate dynamic values in statless widgets or state full widgets so it
+        wont need to do anything in constructor
+
