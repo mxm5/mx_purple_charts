@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grocery_app_flutter/chart_widgets/chrt_bar.dart';
 import 'package:grocery_app_flutter/transaction.dart';
 import 'package:intl/intl.dart';
 
@@ -37,12 +38,19 @@ class Chart extends StatelessWidget {
       // return {'day': 'S', 'amount': 9.99};
       // return {'day': 'Transaction.date', 'amount': 'transaction.amount'};
 
-      print(DateFormat.E().format(lastWeekDay));
-      print(thatDaySum.toStringAsFixed(2));
+      // print(DateFormat.E().format(lastWeekDay));
+      // print(thatDaySum.toStringAsFixed(2));
       return {
-        'day': DateFormat.E().format(lastWeekDay)[0], //slice(0,1)
-        'amount': thatDaySum.toStringAsFixed(2)
+        'day': DateFormat.E().format(
+            lastWeekDay)[0], //substring(0,1) -> not Strin bur strin little s
+        'amount': thatDaySum
       };
+    });
+  }
+
+  double get weeksWholeSpending {
+    return groupedTransactionValues.fold(0.0, (sum, element) {
+      return sum += element['amount'];
     });
   }
 
@@ -53,6 +61,15 @@ class Chart extends StatelessWidget {
       elevation: 6,
       margin: EdgeInsets.all(
         20,
+      ),
+      child: Row(
+        children: groupedTransactionValues.map((e) {
+          return ChartBar(
+            label: e['day'],
+            spendingAmount: (e['amount'] as double),
+            spendingPctOfTotal: (e['amount'] as double) / weeksWholeSpending,
+          );
+        }).toList(),
       ),
     );
   }
