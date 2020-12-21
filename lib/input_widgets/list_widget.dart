@@ -36,48 +36,36 @@ class ListWidget extends StatelessWidget {
             )
           : ListView.builder(
               itemBuilder: (cx, i) {
+                // '\$' + transactions[i].amount.toStringAsFixed(2),
+                // transactions[i].title,
+                // DateFormat.yMMMEd().format(transactions[i].date),
                 return Card(
-                  child: Row(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 15,
-                        ),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 5,
-                          vertical: 10,
-                        ),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Theme.of(context).primaryColor,
-                            width: 2,
+                  elevation: 6,
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 45,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: FittedBox(
+                          child: Text(
+                            '\$' + transactions[i].amount.toStringAsFixed(2),
                           ),
-                        ),
-                        child: Text(
-                          '\$' + transactions[i].amount.toStringAsFixed(2),
-                          style: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 25),
                         ),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            transactions[i].title,
-                            style: Theme.of(context).textTheme.title,
-                          ),
-                          Text(
-                            DateFormat.yMMMEd().format(transactions[i].date),
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontWeight: FontWeight.w100),
-                          ),
-                        ],
-                      )
-                    ],
+                    ),
+                    title: Text(
+                      transactions[i].title,
+                      style: Theme.of(context).textTheme.title,
+                    ),
+                    subtitle: Text(
+                      DateFormat.yMMMEd().format(transactions[i].date),
+                      style: Theme.of(context).textTheme.subtitle,
+                    ),
+                    trailing: IconButton(
+                        icon: Icon(
+                          Icons.delete_forever_outlined,
+                        ),
+                        onPressed: () {}),
                   ),
                 );
               },

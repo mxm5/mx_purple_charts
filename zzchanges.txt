@@ -85,3 +85,7 @@ what is the caution when creating numbers in maps
         we make them string only in text widgets
 when flexible use
         never inside a container
+what is list tile things
+        leading trailing title subtitle all get type 
+        widget
+
