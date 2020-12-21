@@ -28,7 +28,7 @@ class ListWidget extends StatelessWidget {
                 Container(
                   height: 240,
                   child: Image.asset(
-                    'assets/images/waitingInf.gif',
+                    'assets/images/waiting-icon-gif-23.jpg',
                     fit: BoxFit.cover,
                   ),
                 )

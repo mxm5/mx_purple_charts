@@ -67,4 +67,8 @@ how to make Image take proper size
 what is get for ?
         get is to calculate dynamic values in statless widgets or state full widgets so it
         wont need to do anything in constructor
+why we use get inside widgets
+        to make it simpler and cleaner for eyes
+how we can make a date < other date
+        flutter has a date.isAfter() that returns true or false
 

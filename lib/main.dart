@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:grocery_app_flutter/chart_widgets/chart.dart';
 import 'package:grocery_app_flutter/input_widgets/list_state.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
@@ -34,6 +35,12 @@ class _MyAppState extends State<MyApp> {
     //       id: 'fnkj30789',
     //       title: 'water for trip')
   ];
+
+  List<Transaction> get _recentTransactionsList {
+    return _transactions.where((tx) {
+      return tx.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+    }).toList();
+  }
 
   void _addTransaction(Transaction addedTransaction) {
     setState(() {
@@ -94,13 +101,8 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Card(
-                child: Text(
-                  'charts',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white),
-                ),
-                color: Colors.purple,
+              Chart(
+                resentTransactionList: _recentTransactionsList,
               ),
               ListWidget(
                 transactions: _transactions,
@@ -110,7 +112,9 @@ class _MyAppState extends State<MyApp> {
         ),
         floatingActionButton: Builder(builder: (context) {
           return FloatingActionButton(
-            child: Icon(Icons.add),
+            child: Icon(
+              Icons.add,
+            ),
             onPressed: () => _startTransaction(ctx: context),
           );
         }),
