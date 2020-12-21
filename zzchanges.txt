@@ -71,4 +71,17 @@ why we use get inside widgets
         to make it simpler and cleaner for eyes
 how we can make a date < other date
         flutter has a date.isAfter() that returns true or false
-
+what is flex
+        it resizes when some elements chenging like a text which gets too much or 
+        a number which gets too much
+what is fit in a flex
+        it is a  thing that gets an enum and if gets loose it will just be bigger
+        and if it gets tight it resizes internal elements
+what is fited Box
+        it says the child can never grow at any sicumstances
+what is the caution when creating numbers in maps
+        we should not turn them to text or string type 
+        cause they can be used in calculations
+        we make them string only in text widgets
+when flexible use
+        never inside a container

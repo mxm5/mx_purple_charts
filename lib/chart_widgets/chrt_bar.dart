@@ -7,12 +7,37 @@ class ChartBar extends StatelessWidget {
 
   ChartBar({this.label, this.spendingAmount, this.spendingPctOfTotal});
 
+  bool get aOrB {
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Padding(
+      padding: EdgeInsets.all(8),
       child: Column(
         children: [
-          Text('\$${spendingAmount.toStringAsFixed(0)}'),
+          aOrB
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Flexible(
+                        child: FittedBox(
+                            child:
+                                Text('${spendingAmount.toStringAsFixed(0)}'))),
+                    Text('\$')
+                  ],
+                )
+              : Column(
+                  children: [
+                    FittedBox(
+                      child: Text('\$${spendingAmount.toStringAsFixed(0)}'),
+                    ),
+                  ],
+                ),
+          SizedBox(
+            height: 9,
+          ),
           Container(
             width: 10,
             height: 60,

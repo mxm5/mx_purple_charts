@@ -54,23 +54,34 @@ class Chart extends StatelessWidget {
     });
   }
 
+  bool get empty {
+    return resentTransactionList.isEmpty;
+  }
+
   @override
   Widget build(BuildContext context) {
     // print(groupedTransactionValues);
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(
-        20,
+        5,
       ),
-      child: Row(
-        children: groupedTransactionValues.map((e) {
-          return ChartBar(
-            label: e['day'],
-            spendingAmount: (e['amount'] as double),
-            spendingPctOfTotal: (e['amount'] as double) / weeksWholeSpending,
-          );
-        }).toList(),
-      ),
+      child: empty
+          ? Container()
+          : Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: groupedTransactionValues.map((e) {
+                return Flexible(
+                  fit: FlexFit.tight,
+                  child: ChartBar(
+                    label: e['day'],
+                    spendingAmount: (e['amount'] as double),
+                    spendingPctOfTotal:
+                        (e['amount'] as double) / weeksWholeSpending,
+                  ),
+                );
+              }).toList(),
+            ),
     );
   }
 }
