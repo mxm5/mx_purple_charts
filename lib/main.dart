@@ -48,6 +48,14 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void _removeTransaction({String uid}) {
+    setState(() {
+      _transactions.removeWhere((tx) {
+        return tx.id == uid;
+      });
+    });
+  }
+
   void _startTransaction({BuildContext ctx}) {
     showModalBottomSheet(
         context: ctx,
@@ -69,6 +77,15 @@ class _MyAppState extends State<MyApp> {
               title: TextStyle(
                 fontFamily: 'OpenSans',
                 fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+              subtitle: TextStyle(
+                color: Colors.grey,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+              button: TextStyle(
+                color: Colors.purple[800],
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -105,8 +122,8 @@ class _MyAppState extends State<MyApp> {
                 resentTransactionList: _recentTransactionsList,
               ),
               ListWidget(
-                transactions: _transactions,
-              ),
+                  transactions: _transactions,
+                  removeHandeler: _removeTransaction),
             ],
           ),
         ),

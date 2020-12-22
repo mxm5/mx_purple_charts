@@ -5,16 +5,17 @@ import '../transaction.dart';
 
 class ListWidget extends StatelessWidget {
   final List<Transaction> transactions;
+  final Function removeHandeler;
 
   // - assets/images/empty-512.webp
   // - assets/images/waiting-icon-gif-23.jpg
   // - assets/images/waitingInf.gif
 
-  ListWidget({this.transactions});
+  ListWidget({this.transactions, this.removeHandeler});
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: 400,
       child: transactions.isEmpty
           ? Column(
               children: [
@@ -65,7 +66,9 @@ class ListWidget extends StatelessWidget {
                         icon: Icon(
                           Icons.delete_forever_outlined,
                         ),
-                        onPressed: () {}),
+                        onPressed: () {
+                          removeHandeler(uid: transactions[i].id);
+                        }),
                   ),
                 );
               },

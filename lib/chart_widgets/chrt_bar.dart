@@ -17,24 +17,27 @@ class ChartBar extends StatelessWidget {
       padding: EdgeInsets.all(8),
       child: Column(
         children: [
-          aOrB
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Flexible(
-                        child: FittedBox(
-                            child:
-                                Text('${spendingAmount.toStringAsFixed(0)}'))),
-                    Text('\$')
-                  ],
-                )
-              : Column(
-                  children: [
-                    FittedBox(
-                      child: Text('\$${spendingAmount.toStringAsFixed(0)}'),
-                    ),
-                  ],
-                ),
+          Container(
+            height: 17,
+            child: aOrB
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                          child: FittedBox(
+                              child: Text(
+                                  '${spendingAmount.toStringAsFixed(0)}'))),
+                      Text('\$')
+                    ],
+                  )
+                : Column(
+                    children: [
+                      FittedBox(
+                        child: Text('\$${spendingAmount.toStringAsFixed(0)}'),
+                      ),
+                    ],
+                  ),
+          ),
           SizedBox(
             height: 9,
           ),
@@ -42,6 +45,7 @@ class ChartBar extends StatelessWidget {
             width: 10,
             height: 60,
             child: Stack(
+              alignment: Alignment.bottomCenter,
               children: [
                 Container(
                   decoration: BoxDecoration(
