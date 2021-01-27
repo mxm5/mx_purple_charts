@@ -88,4 +88,9 @@ when flexible use
 what is list tile things
         leading trailing title subtitle all get type 
         widget
-
+where we can have assing functions in initializers
+        inside the builder method
+        like appbar thing just inside appbar
+what is layout builder
+        it is a thing that lets you to have constrains which you can get max width 
+        and apon it set some percentages

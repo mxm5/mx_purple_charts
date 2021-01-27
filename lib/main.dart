@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:flutter/services.dart';
 import 'package:grocery_app_flutter/chart_widgets/chart.dart';
 import 'package:grocery_app_flutter/input_widgets/list_state.dart';
 import 'package:intl/intl.dart';
@@ -9,6 +10,11 @@ import 'input_widgets/input_widget.dart';
 import 'input_widgets/list_widget.dart';
 
 void main() {
+  // how not let mobile rotate screen horizpntal
+  // no restart needed
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations(
+  // [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
   runApp(MyApp());
 }
 
@@ -68,6 +74,18 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    final AppBar appBar = AppBar(
+      title: Text('budget app'),
+      actions: [
+        Builder(builder: (context) {
+          return IconButton(
+            icon: Icon(Icons.add),
+            onPressed: () => _startTransaction(ctx: context),
+          );
+        })
+      ],
+    );
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -103,27 +121,39 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         backgroundColor: Colors.white,
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        appBar: AppBar(
-          title: Text('budget app'),
-          actions: [
-            Builder(builder: (context) {
-              return IconButton(
-                icon: Icon(Icons.add),
-                onPressed: () => _startTransaction(ctx: context),
-              );
-            })
-          ],
-        ),
+        appBar: appBar,
         body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Chart(
-                resentTransactionList: _recentTransactionsList,
+              Builder(
+                builder: (context) {
+                  return Container(
+                    height: (MediaQuery.of(context).size.height -
+                            (appBar.preferredSize.height) -
+                            (MediaQuery.of(context).padding.vertical == 0
+                                ? 25
+                                : MediaQuery.of(context).padding.vertical)) *
+                        0.3,
+                    child: Chart(
+                      resentTransactionList: _recentTransactionsList,
+                    ),
+                  );
+                },
               ),
-              ListWidget(
-                  transactions: _transactions,
-                  removeHandeler: _removeTransaction),
+              Builder(builder: (context) {
+                return Container(
+                  height: (MediaQuery.of(context).size.height -
+                          (appBar.preferredSize.height) -
+                          (MediaQuery.of(context).padding.vertical == 0
+                              ? 25
+                              : MediaQuery.of(context).padding.vertical)) *
+                      0.7,
+                  child: ListWidget(
+                      transactions: _transactions,
+                      removeHandeler: _removeTransaction),
+                );
+              })
             ],
           ),
         ),

@@ -61,14 +61,14 @@ class Chart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // print(groupedTransactionValues);
-    return Card(
-      elevation: 6,
-      margin: EdgeInsets.all(
-        5,
-      ),
-      child: empty
-          ? Container()
-          : Row(
+    return empty
+        ? Container()
+        : Card(
+            elevation: 6,
+            margin: EdgeInsets.all(
+              5,
+            ),
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: groupedTransactionValues.map((e) {
                 return Flexible(
@@ -82,6 +82,6 @@ class Chart extends StatelessWidget {
                 );
               }).toList(),
             ),
-    );
+          );
   }
 }

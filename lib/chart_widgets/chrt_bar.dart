@@ -7,68 +7,53 @@ class ChartBar extends StatelessWidget {
 
   ChartBar({this.label, this.spendingAmount, this.spendingPctOfTotal});
 
-  bool get aOrB {
-    return true;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(8),
-      child: Column(
-        children: [
-          Container(
-            height: 17,
-            child: aOrB
-                ? Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                          child: FittedBox(
-                              child: Text(
-                                  '${spendingAmount.toStringAsFixed(0)}'))),
-                      Text('\$')
-                    ],
-                  )
-                : Column(
-                    children: [
-                      FittedBox(
-                        child: Text('\$${spendingAmount.toStringAsFixed(0)}'),
+        padding: EdgeInsets.all(8),
+        child: LayoutBuilder(builder: (context, constrains) {
+          return Column(
+            children: [
+              Container(
+                color: Theme.of(context).primaryColor.withAlpha(30),
+                height: constrains.maxHeight * 0.115,
+                child: FittedBox(
+                  child: Text('\$${spendingAmount.toStringAsFixed(0)}'),
+                ),
+              ),
+              SizedBox(
+                height: constrains.maxHeight * 0.04,
+              ),
+              Container(
+                width: 10,
+                height: constrains.maxHeight * 0.7,
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Color.fromRGBO(220, 220, 220, 1),
+                        border: Border.all(color: Colors.grey, width: 1),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                    ],
-                  ),
-          ),
-          SizedBox(
-            height: 9,
-          ),
-          Container(
-            width: 10,
-            height: 60,
-            child: Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromRGBO(220, 220, 220, 1),
-                    border: Border.all(color: Colors.grey, width: 1),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                FractionallySizedBox(
-                  heightFactor: spendingPctOfTotal,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(10),
                     ),
-                  ),
+                    FractionallySizedBox(
+                      heightFactor: spendingPctOfTotal,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ),
-          Text(label)
-        ],
-      ),
-    );
+              ),
+              Container(
+                  height: constrains.maxHeight * 0.115,
+                  child: FittedBox(child: Text(label)))
+            ],
+          );
+        }));
   }
 }
